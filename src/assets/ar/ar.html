@@ -93,13 +93,7 @@
   arjs="sourceType: webcam; debugUIEnabled: false;"
 >
 
-  <!-- ========================================
-       MARKER 1: DINOSAURIO CON FUEGO
-       ========================================
-       IMPORTANTE: Reemplaza "pattern-marker.patt" 
-       con tu archivo personalizado, por ejemplo:
-       url="../markers/mi-dino-marker.patt"
-  -->
+
   <a-marker
     type="pattern"
     url="../markers/pattern-marker.patt"
@@ -109,7 +103,6 @@
     emitevents="true"
   >
 
-    <!-- CONTENEDOR DEL DINOSAURIO -->
     <a-entity
       rotation="-90 0 0"
       position="0 0 0"
@@ -161,7 +154,6 @@
                    dir: alternate"
       ></a-box>
 
-      <!-- FUEGO CON PARTÍCULAS 🔥 -->
       <a-entity
         id="fuego"
         position="0 0.95 -1.35"
@@ -204,115 +196,6 @@
 
   </a-marker>
 
-
-  <!-- ========================================
-       MARKER 2: SISTEMA SOLAR
-       ========================================
-       IMPORTANTE: Reemplaza con tu marcador personalizado
-       Ejemplo: url="../markers/mi-sistema-solar.patt"
-       
-       Nota: Eliminamos preset="hiro" para usar patrón personalizado
-  -->
-  <a-marker 
-    type="pattern"
-    url="../markers/angriber.patt"
-    id="marker2"
-    smooth="true"
-    smoothCount="5"
-  >
-
-    <!-- SOL -->
-    <a-sphere 
-      color="yellow" 
-      radius="0.25" 
-      position="0 0.5 0"
-      animation="property: scale; 
-                 to: 1.1 1.1 1.1; 
-                 dir: alternate; 
-                 loop: true; 
-                 dur: 800"
-    ></a-sphere>
-
-    <!-- ÓRBITA 1 - Planeta Azul -->
-    <a-torus
-      radius="0.6"
-      radius-tubular="0.008"
-      color="white"
-      rotation="90 0 0"
-      opacity="0.5"
-    ></a-torus>
-
-    <a-entity 
-      animation="property: rotation; 
-                 to: 0 360 0; 
-                 loop: true; 
-                 dur: 3000; 
-                 easing: linear"
-    >
-      <a-sphere 
-        color="blue" 
-        radius="0.07" 
-        position="0.6 0.5 0"
-      ></a-sphere>
-    </a-entity>
-
-    <!-- ÓRBITA 2 - Planeta Rojo -->
-    <a-torus
-      radius="0.9"
-      radius-tubular="0.008"
-      color="white"
-      rotation="90 0 0"
-      opacity="0.5"
-    ></a-torus>
-
-    <a-entity 
-      animation="property: rotation; 
-                 to: 0 -360 0; 
-                 loop: true; 
-                 dur: 5000; 
-                 easing: linear"
-    >
-      <a-sphere 
-        color="red" 
-        radius="0.09" 
-        position="0.9 0.5 0"
-      ></a-sphere>
-    </a-entity>
-
-    <!-- ÓRBITA 3 - Planeta Morado -->
-    <a-torus
-      radius="1.2"
-      radius-tubular="0.008"
-      color="white"
-      rotation="90 0 0"
-      opacity="0.5"
-    ></a-torus>
-
-    <a-entity 
-      animation="property: rotation; 
-                 to: 0 360 0; 
-                 loop: true; 
-                 dur: 7000; 
-                 easing: linear"
-    >
-      <a-sphere 
-        color="purple" 
-        radius="0.1" 
-        position="1.2 0.5 0"
-      ></a-sphere>
-    </a-entity>
-
-  </a-marker>
-
-
-  <!-- MARKER 3: TEXTO - Usa marcador KANJI predeterminado -->
-  <a-marker 
-    preset="kanji"
-    id="marker3"
-    smooth="true"
-    smoothCount="5"
-  >
-    <!-- CALABAZA 3D ANIMADA -->
     <a-sphere
       color="#FF6347"
       radius="0.3"
@@ -325,7 +208,6 @@
                  easing: easeInOutSine"
     ></a-sphere>
 
-    <!-- OJO IZQUIERDO -->
     <a-triangle
       color="black"
       vertex-a="0 0.15 0"
@@ -362,27 +244,12 @@
       position="0 0.85 0"
     ></a-cylinder>
   </a-marker>
-  <a-marker
-  type="pattern"
-  url="../markers/pattern-pattern-pumpkin.patt"
-  id="pumpkinMarker"
-  smooth="true"
-  smoothCount="5"
->
-  <a-image
-    src="../icon/pumpkin.png"
-    position="0 0 0"
-    rotation="-90 0 0"
-    width="1"
-    height="1"
-  ></a-image>
-</a-marker>
+
 
 
   <a-entity camera></a-entity>
 </a-scene>
 
-<!-- Script para el dinosaurio -->
 <script>
   const marker1 = document.querySelector("#marker1");
   const fuego = document.querySelector("#fuego");
@@ -399,7 +266,6 @@
     });
   }
 
-  // Logs para debugging
   const marker2 = document.querySelector("#marker2");
   const marker3 = document.querySelector("#marker3");
 
@@ -416,7 +282,6 @@
   }
 </script>
 
-<!-- Ocultar loader después de cargar -->
 <script>
   window.addEventListener('load', () => {
     setTimeout(() => {
