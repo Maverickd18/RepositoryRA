@@ -1,0 +1,114 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="register-container">
+    
+    <!-- Header Section -->
+    <div class="icon-section">
+      <div class="icon-circle">
+        <ion-icon name="person-add-outline"></ion-icon>
+      </div>
+      <h2>Crear Cuenta</h2>
+      <p class="subtitle">Únete a nuestra comunidad AR</p>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+      
+      <!-- Error Message -->
+      <div class="error-box" *ngIf="errorMessage">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <span>{{ errorMessage }}</span>
+      </div>
+
+      <!-- Nombre -->
+      <div class="input-group">
+        <ion-label>Nombre completo</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Ingresa tu nombre"
+          [(ngModel)]="displayName"
+          fill="outline">
+        </ion-input>
+      </div>
+
+      <!-- Email -->
+      <div class="input-group">
+        <ion-label>Correo electrónico</ion-label>
+        <ion-input
+          type="email"
+          placeholder="tu@email.com"
+          [(ngModel)]="email"
+          fill="outline">
+        </ion-input>
+      </div>
+
+      <!-- Password -->
+      <div class="input-group">
+        <ion-label>Contraseña</ion-label>
+        <div class="password-wrapper">
+          <ion-input
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Mínimo 6 caracteres"
+            [(ngModel)]="password"
+            fill="outline">
+          </ion-input>
+          <ion-icon 
+            [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"
+            class="eye-icon"
+            (click)="togglePassword()">
+          </ion-icon>
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="input-group">
+        <ion-label>Confirmar contraseña</ion-label>
+        <div class="password-wrapper">
+          <ion-input
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Repite tu contraseña"
+            [(ngModel)]="confirmPassword"
+            (keyup.enter)="onRegister()"
+            fill="outline">
+          </ion-input>
+        </div>
+      </div>
+
+      <!-- Password Strength Indicator -->
+      <div class="strength-indicator" *ngIf="password">
+        <div class="strength-bar">
+          <div 
+            class="fill"
+            [style.width.%]="getPasswordStrength()"
+            [ngClass]="getPasswordStrengthClass()">
+          </div>
+        </div>
+        <p class="strength-text">{{ getPasswordStrengthText() }}</p>
+      </div>
+
+      <!-- Register Button -->
+      <ion-button 
+        expand="block" 
+        (click)="onRegister()"
+        [disabled]="loading"
+        class="register-btn">
+        <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+        <span *ngIf="!loading">Crear Cuenta</span>
+      </ion-button>
+
+      <!-- Login Link -->
+      <div class="login-text">
+        ¿Ya tienes cuenta? 
+        <a (click)="goToLogin()">Login</a>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

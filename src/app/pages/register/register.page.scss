@@ -1,0 +1,256 @@
+ion-content {
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.register-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.icon-section {
+  text-align: center;
+  margin-bottom: 32px;
+  animation: fadeInDown 0.6s ease-out;
+
+  .icon-circle {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+
+    ion-icon {
+      font-size: 40px;
+      color: white;
+    }
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 8px 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+}
+
+.form-section {
+  background: white;
+  border-radius: 24px;
+  padding: 28px 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.6s ease-out;
+
+  .input-group {
+    margin-bottom: 20px;
+
+    ion-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 8px;
+    }
+
+    ion-input {
+      --background: #f7fafc;
+      --border-color: #e2e8f0;
+      --border-radius: 12px;
+      --padding-start: 16px;
+      --padding-end: 16px;
+      --color: #2d3748;
+      --placeholder-color: #a0aec0;
+      font-size: 15px;
+      min-height: 50px;
+      transition: all 0.3s ease;
+
+      &:focus-within {
+        --border-color: #667eea;
+        --background: white;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+    }
+
+    .password-wrapper {
+      position: relative;
+
+      ion-input {
+        --padding-end: 48px;
+      }
+
+      .eye-icon {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 22px;
+        color: #718096;
+        cursor: pointer;
+        z-index: 10;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #667eea;
+        }
+
+        &:active {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+
+  .strength-indicator {
+    margin-bottom: 24px;
+    margin-top: -8px;
+
+    .strength-bar {
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 8px;
+
+      .fill {
+        height: 100%;
+        transition: width 0.4s ease, background 0.4s ease;
+        border-radius: 10px;
+
+        &.weak {
+          background: linear-gradient(90deg, #fc8181 0%, #f56565 100%);
+        }
+
+        &.medium {
+          background: linear-gradient(90deg, #f6ad55 0%, #ed8936 100%);
+        }
+
+        &.strong {
+          background: linear-gradient(90deg, #68d391 0%, #48bb78 100%);
+        }
+      }
+    }
+
+    .strength-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: #718096;
+    }
+  }
+
+  .error-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    background: #fff5f5;
+    border: 1px solid #feb2b2;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #c53030;
+    line-height: 1.5;
+    animation: shake 0.4s ease;
+
+    ion-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+  }
+
+  .register-btn {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --border-radius: 12px;
+    --box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    height: 52px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      --background: #cbd5e0;
+      --box-shadow: none;
+    }
+  }
+
+  .login-text {
+    text-align: center;
+    font-size: 14px;
+    color: #718096;
+    padding-top: 8px;
+
+    a {
+      color: #667eea;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #764ba2;
+      }
+
+      &:active {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@media (min-width: 768px) {
+  .register-container {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+}

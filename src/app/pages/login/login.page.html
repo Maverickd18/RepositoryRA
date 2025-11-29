@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="login-container">
+    
+    <!-- Header Section -->
+    <div class="logo-section">
+      <div class="logo-circle">
+        <ion-icon name="eye-outline"></ion-icon>
+      </div>
+      <h1>Bienvenido</h1>
+      <p class="subtitle">Inicia sesión para continuar</p>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+      
+      <!-- Error Message -->
+      <div class="error-box" *ngIf="errorMessage">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <span>{{ errorMessage }}</span>
+      </div>
+
+      <!-- Email -->
+      <div class="input-group">
+        <ion-label>Correo electrónico</ion-label>
+        <ion-input
+          type="email"
+          placeholder="tu@email.com"
+          [(ngModel)]="email"
+          (keyup.enter)="onLogin()"
+          fill="outline">
+        </ion-input>
+      </div>
+
+      <!-- Password -->
+      <div class="input-group">
+        <ion-label>Contraseña</ion-label>
+        <div class="password-wrapper">
+          <ion-input
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Ingresa tu contraseña"
+            [(ngModel)]="password"
+            (keyup.enter)="onLogin()"
+            fill="outline">
+          </ion-input>
+          <ion-icon 
+            [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"
+            class="eye-icon"
+            (click)="togglePassword()">
+          </ion-icon>
+        </div>
+      </div>
+
+      <!-- Login Button -->
+      <ion-button 
+        expand="block" 
+        (click)="onLogin()"
+        [disabled]="loading"
+        class="login-btn">
+        <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+        <span *ngIf="!loading">Iniciar Sesión</span>
+      </ion-button>
+
+      <!-- Divider -->
+      <div class="divider">
+        <span>o</span>
+      </div>
+
+      <!-- Register Link -->
+      <div class="register-text">
+        ¿No tienes cuenta? 
+        <a (click)="goToRegister()">Créala aquí</a>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-text">
+      <p>Realidad Aumentada App</p>
+    </div>
+
+  </div>
+</ion-content>
